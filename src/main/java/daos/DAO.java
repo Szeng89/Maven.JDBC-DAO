@@ -52,7 +52,7 @@ public class DAO implements DAOInterface<Bikes> {
             ArrayList<Bikes> bikesList = new ArrayList<>();
 
 
-            if(rs.next())
+            while(rs.next())
             {
                 Bikes bike = extractUserFromResultSet(rs);
                 bikesList.add(bike);
@@ -69,7 +69,7 @@ public class DAO implements DAOInterface<Bikes> {
     @Override
     public Bikes update(Bikes dto) {
         try {
-            PreparedStatement statment = connection1.prepareStatement("UPDATE Bikes SET Make =?, Model=?, Year=?, Color=?, Size=?, WHERE Id=?");
+            PreparedStatement statment = connection1.prepareStatement("UPDATE Bikes SET Make =?, Model=?, Year=?, Color=?, Size=? WHERE Id=?");
             statment.setString(1, dto.getMake());
             statment.setString(2, dto.getModel());
             statment.setInt(3,dto.getYear());
@@ -92,7 +92,7 @@ public class DAO implements DAOInterface<Bikes> {
     @Override
     public Bikes create(Bikes dto) {
         try {
-            PreparedStatement statment = connection1.prepareStatement("INSERT INTO Bikes VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statment = connection1.prepareStatement("INSERT INTO Bikes (Make, Model, Year, Color, Size, Id) VALUES (?, ?, ?, ?, ?, ?)");
             statment.setString(1, dto.getMake());
             statment.setString(2, dto.getModel());
             statment.setInt(3,dto.getYear());
@@ -108,10 +108,27 @@ public class DAO implements DAOInterface<Bikes> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;    }
+        return null;
+    }
+
+    public void printBikeList(List<Bikes> bikeList) {
+        for (Bikes bike : bikeList) {
+            System.out.println("ID:" + bike.getId() + " Make: " + bike.getMake() + " Model: " +bike.getModel() + " Color:" + bike.getColor() + " Year:" +bike.getYear() + " Size:" + bike.getSize());
+        }
+    }
 
     @Override
     public void delete(int id) {
+        try {
+            Statement stmt = connection1.createStatement();
+            int i = stmt.executeUpdate("DELETE FROM Bikes WHERE id=" + id);
+
+            if (i == 0) {
+                System.out.println("Warning: No bike found with ID: " + id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }

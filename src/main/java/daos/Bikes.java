@@ -38,6 +38,7 @@ public class Bikes implements DTOInterface {
     }
 
     public void setModel(String model) {
+        Model = model;
     }
 
     public int getYear() {
@@ -70,5 +71,11 @@ public class Bikes implements DTOInterface {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Bikes [id= " + getId() + ", color= " + getColor() + ", make= " + getMake() +
+                ", model= " + getModel() + ", size= " + getSize() + ", year= " + getYear() + "]";
     }
 }

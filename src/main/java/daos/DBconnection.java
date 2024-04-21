@@ -22,12 +22,4 @@ public class DBconnection {
         }
     }
 
-
-    public static void main(String[] args) {
-        DAO bikesDao =  new DAO();
-        List<Bikes> bikeList = new ArrayList<>();
-        bikeList.add(bikesDao.findById(1));
-        System.out.println(bikeList);
-
-    }
 }
