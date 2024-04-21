@@ -24,6 +24,15 @@ public class AppRunner {
         List<Bikes> bikeList = bikesDao.findAll();
         bikesDao.printBikeList(bikeList);
 
+        //update  id=4 change the year from 2020 to 2024
+//        Bikes updateBike4 = new Bikes("Giant", "Defy", 2024,"Red", 55, 4);
+        System.out.println("\n\n\n");
+//        bikesDao.update(updateBike4);
+        bikesDao.printBikeList(bikeList);
+
+        //delete Id:6
+//        bikesDao.delete(6);
+
 
 
 

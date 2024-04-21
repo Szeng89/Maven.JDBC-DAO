@@ -6,8 +6,8 @@ import java.util.List;
 
 public class DBconnection {
     public static final String URL = "jdbc:mysql://localhost:3306/Bikes";
-    public static final String USER = "shijin";
-    public static final String PASS = "fujingjoeman";
+    public static final String USER = "USER";
+    public static final String PASS = "PASS";
 
     /**
      * Get a connection to database
