@@ -1,9 +1,8 @@
 package daos;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBconnection {
     public static final String URL = "jdbc:mysql://localhost:3306/Bikes";
@@ -25,6 +24,10 @@ public class DBconnection {
 
 
     public static void main(String[] args) {
-        Connection connection = DBconnection.getConnection();
+        DAO bikesDao =  new DAO();
+        List<Bikes> bikeList = new ArrayList<>();
+        bikeList.add(bikesDao.findById(1));
+        System.out.println(bikeList);
+
     }
 }

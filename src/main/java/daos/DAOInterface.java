@@ -2,7 +2,7 @@ package daos;
 
 import java.util.List;
 
-public interface DAOInterface<T> {
+public interface DAOInterface <T> {
     public T findById(int id);
     public List<T> findAll();
     public T update(T dto);

@@ -1,6 +1,6 @@
-package models;
+package daos;
 
-public class Bikes {
+public class Bikes implements DTOInterface {
     private String Make;
     private String Model;
     private int Year;
